@@ -23,6 +23,7 @@ export default async function PublicProfile({
     );
   }
 
+
   if (!profile) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-black text-white">
@@ -32,6 +33,10 @@ export default async function PublicProfile({
       </main>
     );
   }
+
+await supabase.rpc("increment_profile_views", {
+  profile_username: username,
+});
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-black p-6 text-white">
